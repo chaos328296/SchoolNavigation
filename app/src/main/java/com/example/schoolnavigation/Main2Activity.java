@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.example.struggele.CampusNavigation.R;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 

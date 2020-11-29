@@ -3,8 +3,10 @@ package com.example.schoolnavigation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -12,11 +14,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
-import com.example.struggele.CampusNavigation.R;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
+import com.amap.api.maps.LocationSource;
+import com.amap.api.maps.MapView;
+import com.amap.api.maps.UiSettings;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.PolylineOptions;
 
-public class MainActivity extends AppCompatActivity {
-
+import java.util.ArrayList;
+import java.util.List;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -47,7 +63,9 @@ import java.util.List;
 
         //AMap是地图对象
         private AMap aMap;
-        private MapView mapView;
+        private
+
+        MapView mapView;
         //声明AMapLocationClient类对象，定位发起端
         private AMapLocationClient mLocationClient = null;
         //声明mLocationOption对象，定位参数
@@ -382,4 +400,3 @@ import java.util.List;
         }
     }
 
-}
