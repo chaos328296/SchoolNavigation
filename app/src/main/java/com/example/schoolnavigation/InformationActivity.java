@@ -13,8 +13,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 import com.amap.api.maps.model.LatLng;
 import java.io.Serializable;
@@ -114,12 +112,6 @@ public class InformationActivity extends AppCompatActivity {
                     intent.putExtra("points", (Serializable) points);
                     startActivity(intent);
                     if (webView != null) {
-//                        webView.stopLoading();
-//                        webView.setWebViewListener(null);
-//                        webView.clearHistory();
-//                        webView.clearCache(true);
-//                        webView.loadUrl("about:blank");
-//                        webView.pauseTimers();
                         webView = null;
                     }
                     finish();
@@ -135,8 +127,6 @@ public class InformationActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-//                        x = getIntent().getDoubleExtra("x", x);
-//                        y = getIntent().getDoubleExtra("y", y);
                         location(1,getIntent().getDoubleExtra("x", x),getIntent().getDoubleExtra("y", y));
                         break;
                     case 1:

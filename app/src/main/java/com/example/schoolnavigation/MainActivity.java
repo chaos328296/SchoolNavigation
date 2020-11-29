@@ -105,19 +105,6 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         }
         //开始定位
         location();
-
-
-//        Button button = (Button)findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent =new Intent(MainActivity.this, Main2Activity.class);
-////                intent.putExtra("x",x);
-////                intent.putExtra("y",y);
-//                startActivity(intent);
-////                finish();
-//            }
-//        });
         mSearchView = (SearchView) findViewById(R.id.searchView);
         lListView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mStrs);
@@ -175,25 +162,6 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         if(list != null && !list.isEmpty()){
             setUpMap();
         }
-//        AMapLocationListener mAMapLocationListener = new AMapLocationListener(){
-//            @Override
-//            public void onLocationChanged(AMapLocation amapLocation) {
-//                if (amapLocation != null) {
-//                    if (amapLocation.getErrorCode() == 0) {
-//                            //可在其中解析amapLocation获取相应内容。
-//                        latLng=new LatLng(amapLocation.getLatitude(),amapLocation.getLongitude());
-//                        Log.i("111",amapLocation.getLatitude()+""+amapLocation.getLongitude());
-//                        //list.add(0,latLng);
-//                        setUpMap();
-//                    }else {
-//                        //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-//                        Log.e("AmapError","location Error, ErrCode:"
-//                                + amapLocation.getErrorCode() + ", errInfo:"
-//                                + amapLocation.getErrorInfo());
-//                    }
-//                }
-//            }
-//        };
     }
 
 
