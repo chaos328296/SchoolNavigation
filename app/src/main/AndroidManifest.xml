@@ -30,19 +30,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <service android:name="com.amap.api.location.APSService"></service>
-
+        
         <meta-data android:name="com.amap.api.v2.apikey" android:value="c9e2c8fec2ddeefefac4677409b6eb6b">
         </meta-data>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".AnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="com.amap.api.location.APSService" />
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity android:name=".InformationActivity" />
     </application>
 
 </manifest>

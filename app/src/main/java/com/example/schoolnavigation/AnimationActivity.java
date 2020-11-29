@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
-
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -13,10 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
-
-import androidx.appcompat.app.AppCompatActivity;
-
 public class AnimationActivity extends AppCompatActivity {
 
     @Override
@@ -24,9 +20,7 @@ public class AnimationActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
-        //乱写的
-        ImageView imageView=(ImageView)findViewById(R.id.animateToStart);
-        //ImageView imageView=(ImageView)findViewById(R.id.animaator_image);
+        ImageView imageView=(ImageView)findViewById(R.id.animaator_image);
         AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
                 R.animator.property_animator);
         set.setTarget(imageView);
@@ -88,5 +82,3 @@ public class AnimationActivity extends AppCompatActivity {
         finish();
     }
 }
-
-
