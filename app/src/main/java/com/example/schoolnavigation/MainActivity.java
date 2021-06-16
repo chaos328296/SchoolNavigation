@@ -29,6 +29,7 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.PolylineOptions;
+import com.example.schoolnavigation.ui.login.LoginActivity;
 
 
 import java.text.SimpleDateFormat;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
 
     double x;
     double y;
+    String name;
 
     //AMap是地图对象
     private AMap aMap;
@@ -75,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         setContentView(R.layout.activity_main);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        Intent data = getIntent();
+        name = data.getExtras().getString("name");
+        System.out.println(name+"***********************************************************");
         gra.GraphBuild();
 
         list = (ArrayList<LatLng>) getIntent().getSerializableExtra("points");
@@ -105,6 +110,19 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         }
         //开始定位
         location();
+
+
+//        Button button = (Button)findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent =new Intent(MainActivity.this, Main2Activity.class);
+////                intent.putExtra("x",x);
+////                intent.putExtra("y",y);
+//                startActivity(intent);
+////                finish();
+//            }
+//        });
         mSearchView = (SearchView) findViewById(R.id.searchView);
         lListView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mStrs);
@@ -155,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
                 Intent intent =new Intent(MainActivity.this, InformationActivity.class);
                 intent.putExtra("x",x);
                 intent.putExtra("y",y);
+                intent.putExtra("name", name);
                 startActivity(intent);
                 finish();
             }
@@ -162,6 +181,25 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
         if(list != null && !list.isEmpty()){
             setUpMap();
         }
+//        AMapLocationListener mAMapLocationListener = new AMapLocationListener(){
+//            @Override
+//            public void onLocationChanged(AMapLocation amapLocation) {
+//                if (amapLocation != null) {
+//                    if (amapLocation.getErrorCode() == 0) {
+//                            //可在其中解析amapLocation获取相应内容。
+//                        latLng=new LatLng(amapLocation.getLatitude(),amapLocation.getLongitude());
+//                        Log.i("111",amapLocation.getLatitude()+""+amapLocation.getLongitude());
+//                        //list.add(0,latLng);
+//                        setUpMap();
+//                    }else {
+//                        //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+//                        Log.e("AmapError","location Error, ErrCode:"
+//                                + amapLocation.getErrorCode() + ", errInfo:"
+//                                + amapLocation.getErrorInfo());
+//                    }
+//                }
+//            }
+//        };
     }
 
 
@@ -211,15 +249,38 @@ public class MainActivity extends AppCompatActivity implements LocationSource, A
 
 
         //起点坐标
-        LatLng start = list.get(0);//new LatLng(45.70736,126.624551);
+        final LatLng start = list.get(0);//new LatLng(45.70736,126.624551);
         //终点坐标
         LatLng end = list.get(list.size()-1);//new LatLng(45.706596,126.624637);
         //起点锚点
-        final Marker marker = aMap.addMarker(new MarkerOptions().position(start).title("北京").snippet("DefaultMarker")
+        final Marker marker = aMap.addMarker(new MarkerOptions().position(start).title("A食堂").snippet("点击查看详情")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_start)));
         //终点锚点
-        final Marker marker1 = aMap.addMarker(new MarkerOptions().position(end).title("北京").snippet("DefaultMarker")
+        final Marker marker1 = aMap.addMarker(new MarkerOptions().position(end).title("B食堂").snippet("点击查看详情")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.amap_end)));
+
+        // 定义 Marker 点击事件监听
+        AMap.OnMarkerClickListener markerClickListener = new AMap.OnMarkerClickListener() {
+            // marker 对象被点击时回调的接口
+            // 返回 true 则表示接口已响应事件，否则返回false
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                //Log.i("lgq","dianjiddd===="+marker.getPeriod());//获取markerID
+                //Toast.makeText(getApplicationContext(), marker.getPeriod(), Toast.LENGTH_LONG).show();
+
+                if(name.equals("20190001")){
+                    Toast.makeText(getApplicationContext(), "第一个人", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext(), "第二个人", Toast.LENGTH_LONG).show();
+                }
+
+//                Intent intent =new Intent(MainActivity.this, InformationActivity.class);
+//                startActivity(intent);
+                return false;
+            }
+        };
+// 绑定 Marker 被点击事件
+        aMap.setOnMarkerClickListener(markerClickListener);
 
     }
 

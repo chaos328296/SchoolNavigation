@@ -488,7 +488,7 @@ public class Graph {
         hashMap.put("12", "https://view.yitevr.com/#/panoview/50170");//4号教学楼
         hashMap.put("13", "https://view.yitevr.com/#/panoview/50187");//C区游泳馆
         hashMap.put("14", "https://view.yitevr.com/#/panoview/50209"); //艺术楼
-        // hashMap.put("14", "http://tieba.baidu.com/p/6151985084?pid=125937520325&cid=0#125937520325"); //艺术楼
+        hashMap.put("15", "http://tieba.baidu.com/p/6151985084?pid=125937520325&cid=0#125937520325"); //艺术楼
     }
     public String find(String x)
     {

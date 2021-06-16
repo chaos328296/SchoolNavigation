@@ -21,6 +21,8 @@ public class AnimationActivity extends AppCompatActivity {
                 R.animator.property_animator);
         set.setTarget(imageView);
         set.start();
+        Intent data = getIntent();
+        final String name = data.getExtras().getString("name");
         set.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
@@ -30,7 +32,8 @@ public class AnimationActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animator) {
                 Intent intent=new Intent(AnimationActivity.this,MainActivity.class);
-                startActivity(intent);
+                intent.putExtra("name", name);
+                startActivityForResult(intent,1);
             }
 
             @Override
@@ -43,6 +46,8 @@ public class AnimationActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
     @Override
     protected void onPause() {//当动画结束后，就把该动画活动销毁

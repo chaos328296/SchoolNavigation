@@ -100,7 +100,11 @@ public class InformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (x != x1 && y != y1) {
+                    Intent data = getIntent();
+                    String name = data.getExtras().getString("name");
                     Intent intent = new Intent(InformationActivity.this, MainActivity.class);
+                    intent.putExtra("name", name);
+                    startActivityForResult(intent,1);
                     List<LatLng> points = new ArrayList<LatLng>();
 
                     //画线位置点
